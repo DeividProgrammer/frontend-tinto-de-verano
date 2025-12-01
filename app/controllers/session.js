@@ -54,21 +54,21 @@ export default class SessionController extends Controller {
           const errorJson = await response.json();
           errorText = errorJson.errors?.[0]?.detail || response.statusText;
         } catch (parseError) {
-          console.error('Error parseando respuesta de login:', parseError);
+          console.error('Login response parsing error:', parseError);
           errorText = response.statusText;
         }
-        throw new Error(errorText || 'Error al iniciar sesión');
+        throw new Error(errorText || 'Login error');
       }
 
       const data = await response.json();
-      console.log('Login correcto, respuesta del servidor:', data);
+      console.log('Correct Login, server response:', data);
 
       this.session.setSession(data.data);
 
       this.router.transitionTo('me');
-    } catch (e) {
-      console.error('Error en login:', e);
-      this.errorMessage = e.message || 'No se pudo iniciar sesión (error de red)';
+    } catch (err) {
+      console.error('Login error:', err);
+      this.errorMessage = err.message || "It wasn't possible to log in. Network error";
       this.password = '';
     } finally {
       this.isAuthenticating = false;
