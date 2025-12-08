@@ -30,7 +30,7 @@ export default class SessionController extends Controller {
     this.isAuthenticating = true;
 
     try {
-      const response = await fetch('/api/session', {
+      const response = await fetch('/session', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/vnd.api+json',
@@ -68,7 +68,7 @@ export default class SessionController extends Controller {
       this.router.transitionTo('me');
     } catch (err) {
       console.error('Login error:', err);
-      this.errorMessage = err.message || "It wasn't possible to log in. Network error";
+      this.errorMessage = err.message || "It wasn't possible to log in.";
       this.password = '';
     } finally {
       this.isAuthenticating = false;

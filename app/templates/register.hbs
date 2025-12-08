@@ -1,2 +1,100 @@
 {{page-title "Register"}}
-{{outlet}}
+
+<div class="login-page">
+  <div class="login-layout grid grid-cols-2 gap-8">
+    <div class="login-column login-column--form">
+      <div class="login-form-wrapper">
+        <h1 class="login-title">Tinto de Verano</h1>
+        <p class="login-subtitle">
+          Regístrate para ver tu consumo y rankings!
+        </p>
+
+        {{#if this.errorMessage}}
+          <div class="login-error">
+            {{this.errorMessage}}
+          </div>
+        {{/if}}
+
+        <form class="login-form" {{on "submit" this.register}}>
+
+          <div class="login-field">
+            <label for="mu-login-nickname">Nickname</label>
+            <input
+              id="mu-login-nickname"
+              name="nickname"
+              type="text"
+              required
+              value={{this.nickname}}
+              {{on "input" this.updateNickname}}
+            >
+          </div>
+
+          <div class="login-field">
+            <label for="mu-login-name">Name</label>
+            <input
+              id="mu-login-name"
+              name="name"
+              type="text"
+              required
+              value={{this.name}}
+              {{on "input" this.updateName}}
+            >
+          </div>
+
+          <div class="login-field">
+            <label for="mu-login-username">Email address</label>
+            <input
+              id="mu-login-username"
+              name="email"
+              autocomplete="email"
+              type="email"
+              required
+              value={{this.email}}
+              {{on "input" this.updateEmail}}
+            >
+          </div>
+
+          <div class="login-field">
+            <label for="mu-login-password">Password</label>
+            <input
+              id="mu-login-password"
+              name="password"
+              type="password"
+              autocomplete="new-password"
+              required
+              value={{this.password}}
+              {{on "input" this.updatePassword}}
+            >
+          </div>
+
+          <div class="login-field">
+            <label for="mu-login-password-confirm">Confirm password</label>
+            <input
+              id="mu-login-password-confirm"
+              name="passwordConfirmation"
+              type="password"
+              autocomplete="new-password"
+              required
+              value={{this.passwordConfirmation}}
+              {{on "input" this.updatePasswordConfirmation}}
+            >
+          </div>
+
+          <div class="login-actions">
+            <button
+              type="submit"
+              class="login-button"
+              disabled={{this.isAuthenticating}}
+            >
+              {{if this.isAuthenticating "Registering..." "Register"}}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="login-column login-column--image has-photo">
+      <div class="login-image-overlay"></div>
+    </div>
+  </div>
+</div>
