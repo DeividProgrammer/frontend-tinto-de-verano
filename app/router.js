@@ -15,4 +15,5 @@ Router.map(function () {
   });
   this.route('me');
   this.route('register');
+  this.route('manage-groups');
 });

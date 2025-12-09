@@ -6,10 +6,35 @@
       Tinto de Verano
     </div>
     <div class="main-navbar__links">
-      <LinkTo @route="me" class="main-navbar__link">Mi Perfil</LinkTo>
-      <LinkTo @route="groups" class="main-navbar__link">Grupos</LinkTo>
+      <LinkTo @route="me" class="main-navbar__link">My profile</LinkTo>
+
+      <div class="navbar-groups">
+        <button type="button" class="main-navbar__link" {{on "click" this.toggleGroupsMenu}}>
+          Groups ▾
+        </button>
+
+        {{#if this.isGroupsMenuOpen}}
+          <div class="navbar-groups__menu">
+            <button
+              type="button"
+              class="navbar-groups__item"
+              {{on "click" this.goToMyGroups}}
+            >
+              See my groups
+            </button>
+            <button
+              type="button"
+              class="navbar-groups__item"
+              {{on "click" this.goToJoinGroups}}
+            >
+              Join groups
+            </button>
+          </div>
+        {{/if}}
+      </div>
+
       <button type="button" class="main-navbar__link" {{on "click" this.logout}}>
-        Salir
+        Logout
       </button>
     </div>
   </nav>

@@ -1,27 +1,35 @@
 {{page-title "Me"}}
 
 <div class="me-page">
-  <h1>Mi Contador de Tintos</h1>
+  <div class="me-card">
+    <h1 class="me-title">This week you've taken</h1>
 
-  {{#if @model.error}}
-    <p class="error">{{@model.error}}</p>
-  {{else}}
-    <div class="counter-display">
-      <p>
-        Has tomado
-        <strong>
+    {{#if @model.error}}
+      <p class="me-error">{{@model.error}}</p>
+    {{else}}
+      <div class="me-counter">
+        <div class="me-counter__value">
           {{if this.weeklyCount this.weeklyCount (if @model.count @model.count 0)}}
-        </strong>
-        tintos esta semana
-        {{#if @model.period}}
-          ({{@model.period}})
-        {{/if}}.
-      </p>
-    </div>
+        </div>
 
-    <div class="counter-actions">
-      <button type="button" {{on "click" this.decrement}}>-</button>
-      <button type="button" {{on "click" this.increment}}>+</button>
-    </div>
-  {{/if}}
+        <div class="me-counter__buttons">
+          <button
+            type="button"
+            class="me-counter__button me-counter__button--minus"
+            {{on "click" this.decrement}}
+          >
+            -
+          </button>
+
+          <button
+            type="button"
+            class="me-counter__button me-counter__button--plus"
+            {{on "click" this.increment}}
+          >
+            +
+          </button>
+        </div>
+      </div>
+    {{/if}}
+  </div>
 </div>
