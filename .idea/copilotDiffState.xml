@@ -12,15 +12,6 @@
             </PendingDiffInfo>
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/app/routes/me.js">
-          <value>
-            <PendingDiffInfo>
-              <option name="filePath" value="$PROJECT_DIR$/app/routes/me.js" />
-              <option name="originalContent" value="import Route from '@ember/routing/route';&#10;import { inject as service } from '@ember/service';&#10;import RSVP from 'rsvp';&#10;&#10;export default class MeRoute extends Route {&#10;  @service session;&#10;  @service router;&#10;  @service store;&#10;&#10;  beforeModel(transition) {&#10;    if (!this.session.isAuthenticated) {&#10;      this.router.transitionTo('session');&#10;    }&#10;  }&#10;&#10;  async model() {&#10;    const response = await RSVP.hash({&#10;      user: this.store.findRecord('user', 'me'),&#10;&#10;      counter: fetch('http://localhost:8888/me/counter', {&#10;        method: 'GET',&#10;        headers: {&#10;          'Content-Type': 'application/vnd.api+json',&#10;          Accept: 'application/vnd.api+json',&#10;        },&#10;        credentials: 'include',&#10;      }).then((response) =&gt; {&#10;        if (response.ok) {&#10;          return response.json();&#10;        } else {&#10;          this.router.transitionTo('session');&#10;        }&#10;      }),&#10;    });&#10;&#10;    return response;&#10;  }&#10;}&#10;&#10;" />
-              <option name="updatedContent" value="import Route from '@ember/routing/route';&#10;import { inject as service } from '@ember/service';&#10;import RSVP from 'rsvp';&#10;&#10;export default class MeRoute extends Route {&#10;  @service session;&#10;  @service router;&#10;  @service store;&#10;&#10;  beforeModel(transition) {&#10;    if (!this.session.isAuthenticated) {&#10;      this.router.transitionTo('session');&#10;    }&#10;  }&#10;&#10;  async model() {&#10;    const response = await RSVP.hash({&#10;      user: this.store.findRecord('user', 'me'),&#10;&#10;      counter: fetch('http://localhost:8888/me/counter', {&#10;        method: 'GET',&#10;        headers: {&#10;          'Content-Type': 'application/vnd.api+json',&#10;          Accept: 'application/vnd.api+json',&#10;        },&#10;        credentials: 'include',&#10;      }).then((response) =&gt; {&#10;        if (response.ok) {&#10;          return response.json();&#10;        } else {&#10;          this.router.transitionTo('session');&#10;        }&#10;      }),&#10;    });&#10;&#10;    return response;&#10;  }&#10;}&#10;&#10;" />
-            </PendingDiffInfo>
-          </value>
-        </entry>
       </map>
     </option>
   </component>

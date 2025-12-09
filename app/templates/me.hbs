@@ -1,2 +1,27 @@
 {{page-title "Me"}}
-{{outlet}}
+
+<div class="me-page">
+  <h1>Mi Contador de Tintos</h1>
+
+  {{#if @model.error}}
+    <p class="error">{{@model.error}}</p>
+  {{else}}
+    <div class="counter-display">
+      <p>
+        Has tomado
+        <strong>
+          {{if this.weeklyCount this.weeklyCount (if @model.count @model.count 0)}}
+        </strong>
+        tintos esta semana
+        {{#if @model.period}}
+          ({{@model.period}})
+        {{/if}}.
+      </p>
+    </div>
+
+    <div class="counter-actions">
+      <button type="button" {{on "click" this.decrement}}>-</button>
+      <button type="button" {{on "click" this.increment}}>+</button>
+    </div>
+  {{/if}}
+</div>

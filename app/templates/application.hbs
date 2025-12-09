@@ -1,3 +1,18 @@
 {{page-title "FrontendTintoVerano"}}
 
+{{#if this.showNavbar}}
+  <nav class="main-navbar">
+    <div class="main-navbar__brand">
+      Tinto de Verano
+    </div>
+    <div class="main-navbar__links">
+      <LinkTo @route="me" class="main-navbar__link">Mi Perfil</LinkTo>
+      <LinkTo @route="groups" class="main-navbar__link">Grupos</LinkTo>
+      <button type="button" class="main-navbar__link" {{on "click" this.logout}}>
+        Salir
+      </button>
+    </div>
+  </nav>
+{{/if}}
+
 {{outlet}}

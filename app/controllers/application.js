@@ -1,0 +1,20 @@
+import Controller from '@ember/controller';
+import { inject as service } from '@ember/service';
+import { action } from '@ember/object';
+
+export default class ApplicationController extends Controller {
+  @service router;
+  @service session;
+  @service store;
+
+  get showNavbar() {
+    return this.router.currentRouteName !== 'session' && this.router.currentRouteName !== 'register';
+  }
+
+  @action
+  logout() {
+    this.session.clearSession();
+    this.store.unloadAll();
+    this.router.transitionTo('session');
+  }
+}
