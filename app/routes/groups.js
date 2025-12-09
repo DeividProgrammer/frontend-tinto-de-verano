@@ -9,6 +9,7 @@ export default class GroupsRoute extends Route {
     try {
       const groupsList = await this.groups.getGroups();
       console.log('Groups list:', groupsList);
+      const currentUser = await this.session.getMe();
 
       return {
         groups: groupsList,
