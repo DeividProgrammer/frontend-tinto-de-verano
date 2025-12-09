@@ -1,9 +1,7 @@
 import Service, { service } from '@ember/service';
-import { action } from '@ember/object';
 
 export default class WeeklyCounterService extends Service {
   @service store;
-  @service session;
 
   async getWeeklyCount() {
     const weeklyCounts = await this.store.queryRecord('weekly-count', {});

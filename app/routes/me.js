@@ -2,8 +2,6 @@ import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
 export default class MeRoute extends Route {
-  @service session;
-  @service router;
   @service weeklyCounter;
 
   async model() {

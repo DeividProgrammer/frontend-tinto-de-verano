@@ -318,3 +318,55 @@
 .navbar-groups__item:hover {
   background: #f3f4f6;
 }
+
+/* Groups page layout */
+.groups-page {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 0 2rem;
+}
+
+.groups-title {
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.groups-error {
+  color: #e53e3e;
+}
+
+.groups-empty {
+  color: #4b5563;
+  font-size: 1rem;
+}
+
+.groups-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.groups-table__header {
+  text-align: left;
+  padding: 1rem 1.25rem;
+  background: #f9fafb;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #374151;
+}
+
+.groups-table__row:nth-child(even) {
+  background: #f9fafb;
+}
+
+.groups-table__cell {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 1rem;
+  color: #111827;
+}

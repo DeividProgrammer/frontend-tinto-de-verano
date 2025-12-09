@@ -8,11 +8,6 @@ export default class MeController extends Controller {
 
   @tracked weeklyCount = null;
 
-  loadFromModel() {
-    if (this.model && this.model.count != null) {
-      this.weeklyCount = this.model.count;
-    }
-  }
 
   @action
   async increment() {

@@ -1,2 +1,40 @@
 {{page-title "Groups"}}
-{{outlet}}
+
+<div class="groups-page">
+  {{#if @model.error}}
+    <p class="groups-error">{{@model.error}}</p>
+  {{else}}
+    <h1 class="groups-title">Groups</h1>
+
+    {{#if @model.groups.length}}
+      <table class="groups-table">
+        <thead>
+          <tr>
+            <th class="groups-table__header">Name</th>
+            <th class="groups-table__header">Status</th>
+            <th class="groups-table__header">Join</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each @model.groups as |group|}}
+            <tr class="groups-table__row">
+              <td class="groups-table__cell">{{group.name}}</td>
+              <td class="groups-table__cell">{{group.status}}</td>
+              <td class="groups-table__cell">
+                <button
+                  type="button"
+                  class="login-button"
+                  {{on "click" (fn this.joinGroup group)}}
+                >
+                  Join
+                </button>
+              </td>
+            </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    {{else}}
+      <p class="groups-empty">No groups found.</p>
+    {{/if}}
+  {{/if}}
+</div>
