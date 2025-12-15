@@ -14,4 +14,18 @@ export default class GroupAdapter extends ApplicationAdapter {
 
     return response;
   }
+
+  async leaveGroup(store, groupId) {
+    const baseUrl = this.buildURL('group', groupId, null, 'findRecord');
+    const url = `${baseUrl}/leave`;
+
+    const response = await this.ajax(url, 'DELETE', {
+      headers: {
+        Accept: 'application/vnd.api+json',
+        'Content-Type': 'application/vnd.api+json',
+      },
+    });
+
+    return response;
+  }
 }

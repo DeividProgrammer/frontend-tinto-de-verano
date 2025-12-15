@@ -4,13 +4,7 @@ export default class GroupsService extends Service {
   @service store;
 
   async getGroups() {
-    const groups = await this.store.findAll('group');
-
-    return groups.map((group) => ({
-      id: group.id,
-      name: group.name,
-      status: this._shortStatus(group.status),
-    }));
+    return await this.store.findAll('group');
   }
 
   _shortStatus(statusUri) {

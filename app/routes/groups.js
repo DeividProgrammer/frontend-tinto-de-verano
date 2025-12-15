@@ -23,4 +23,9 @@ export default class GroupsRoute extends Route {
       };
     }
   }
+  actions = {
+    refreshRoute() {
+      this.refresh();
+    },
+  };
 }

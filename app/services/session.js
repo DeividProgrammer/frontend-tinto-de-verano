@@ -23,6 +23,7 @@ export default class SessionService extends Service {
     try {
       const user = await this.store.queryRecord('user', { me: true });
       console.log('Ember Data /me user record:', user);
+      this.currentSession = user;
       return user;
     } catch (error) {
       console.error('Error loading current user via Ember Data /me:', error);
