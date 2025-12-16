@@ -30,41 +30,7 @@ export default class SessionController extends Controller {
     this.isAuthenticating = true;
 
     try {
-      const response = await fetch('/session', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/vnd.api+json',
-          Accept: 'application/vnd.api+json',
-        },
-        credentials: 'include',
-        body: JSON.stringify({
-          data: {
-            type: 'sessions',
-            attributes: {
-              email: this.email,
-              password: this.password,
-            },
-          },
-        }),
-      });
-
-      if (!response.ok) {
-        let errorText;
-        try {
-          const errorJson = await response.json();
-          errorText = errorJson.errors?.[0]?.detail || response.statusText;
-        } catch (parseError) {
-          console.error('Login response parsing error:', parseError);
-          errorText = response.statusText;
-        }
-        throw new Error(errorText || 'Login error');
-      }
-
-      const data = await response.json();
-      console.log('Correct Login, server response:', data);
-
-      this.session.setSession(data.data);
-
+      await this.session.login(this.email, this.password);
       this.router.transitionTo('me');
     } catch (err) {
       console.error('Login error:', err);

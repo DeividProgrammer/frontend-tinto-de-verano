@@ -6,6 +6,7 @@ import { inject as service } from '@ember/service';
 export default class RegisterController extends Controller {
   @service store;
   @service router;
+  @service session;
 
   /*
   Ejemplo de payload que el backend espera:
@@ -78,15 +79,20 @@ export default class RegisterController extends Controller {
 
       await account.save();
 
+      console.log('Account saved successfully. Redirecting to login...');
+
       this.nickname = '';
       this.name = '';
       this.email = '';
       this.password = '';
       this.passwordConfirmation = '';
 
-      this.router.transitionTo('me');
+      this.router.transitionTo('session');
     } catch (err) {
       console.error('Registration error:', err);
+      this.errorMessage = err.message || 'Registration failed.';
+    } finally {
+      this.isAuthenticating = false;
     }
   }
 }
