@@ -16,4 +16,7 @@ Router.map(function () {
   this.route('me');
   this.route('register');
   this.route('manage-groups');
+  this.route('leaderboard', function () {
+    this.route('detail', { path: '/:group_id' });
+  });
 });

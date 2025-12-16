@@ -1,0 +1,66 @@
+<div class="leaderboard-container">
+    <h1>Your Leaderboards</h1>
+
+    {{#if @model.error}}
+    <div class="alert alert-danger">{{@model.error}}</div>
+    {{/if}}
+
+    <div class="leaderboard-grid">
+        {{#each @model.leaderboards as |leaderboard|}}
+        <LinkTo @route="leaderboard.detail" @model={{leaderboard.groupId}} class="leaderboard-card">
+            <h2>{{leaderboard.groupName}}</h2>
+
+            <div class="user-position">
+                <span>You are at position:</span>
+                <strong>{{leaderboard.ranking}}</strong>
+            </div>
+        </LinkTo>
+        {{/each}}
+    </div>
+</div>
+
+<style>
+    .leaderboard-container {
+        padding: 20px;
+    }
+
+    .leaderboard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    .leaderboard-card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 16px;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s;
+        background: white;
+        display: block;
+        /* For LinkTo */
+    }
+
+    .leaderboard-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .user-position {
+        margin: 10px 0;
+        font-size: 1.1em;
+    }
+
+    .top-three ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    .top-three li {
+        display: flex;
+        justify-content: space-between;
+        padding: 4px 0;
+        border-bottom: 1px solid #eee;
+    }
+</style>

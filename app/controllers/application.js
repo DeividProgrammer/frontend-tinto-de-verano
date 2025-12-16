@@ -22,24 +22,12 @@ export default class ApplicationController extends Controller {
   }
 
   @action
-  toggleGroupsMenu() {
-    this.isGroupsMenuOpen = !this.isGroupsMenuOpen;
-  }
-
-  @action
-  closeGroupsMenu() {
-    this.isGroupsMenuOpen = false;
-  }
-
-  @action
   goToMyGroups() {
-    this.closeGroupsMenu();
     this.router.transitionTo('groups');
   }
 
   @action
-  goToJoinGroups() {
-    this.closeGroupsMenu();
-    this.router.transitionTo('groups');
+  goToLeaderboard() {
+    this.router.transitionTo('leaderboard');
   }
 }
