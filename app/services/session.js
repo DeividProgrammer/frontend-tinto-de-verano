@@ -15,8 +15,19 @@ export default class SessionService extends Service {
     this.currentSession = sessionData;
   }
 
+  async invalidate() {
+    try {
+      await fetch('/session', { method: 'DELETE' });
+    } catch (error) {
+      console.error('Error during backend logout:', error);
+    } finally {
+      this.clearSession();
+    }
+  }
+
   clearSession() {
     this.currentSession = null;
+    this.store.unloadAll();
   }
 
   async getMe() {

@@ -15,9 +15,8 @@ export default class ApplicationController extends Controller {
   }
 
   @action
-  logout() {
-    this.session.clearSession();
-    this.store.unloadAll();
+  async logout() {
+    await this.session.invalidate();
     this.router.transitionTo('session');
   }
 
