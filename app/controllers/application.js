@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { getOwner } from '@ember/application';
 
 export default class ApplicationController extends Controller {
   @service router;
@@ -16,6 +17,12 @@ export default class ApplicationController extends Controller {
 
   @action
   async logout() {
+    // Reset MeController state before logout
+    const meController = getOwner(this).lookup('controller:me');
+    if (meController) {
+      meController.weeklyCount = null;
+    }
+
     await this.session.invalidate();
     this.router.transitionTo('session');
   }
